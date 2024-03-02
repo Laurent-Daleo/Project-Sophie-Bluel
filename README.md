@@ -19,3 +19,5 @@ Lien pour voir la
 [documentation Swagger](http://localhost:5678/api-docs/)
 
 Pour lire la documentation, utiliser Chrome ou Firefox
+ Utilisez une autre extension que Liveserver car il y a des bug au niveau de sqlite, 
+ même en plaçant "**/*.sqlite" dans ignore files de l'extension 
