@@ -47,7 +47,7 @@ function displayCheckPassword() {
   if (checkPassword(password.value)) {
     return true;
   } else {
-    displayErreur.innnertext = "Mot de passe non valide";
+    displayErreur.innertext = "Mot de passe non valide";
     return false;
   }
 }
@@ -73,7 +73,6 @@ async function postUserLog(dataToSend) {
       return response.json();
     })
     .then((data) => {
-      console.log(data.token);
       localStorage.setItem("token", data.token);
       document.location.href = "./index.html";
     });
