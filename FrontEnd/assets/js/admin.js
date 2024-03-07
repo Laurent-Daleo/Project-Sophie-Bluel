@@ -258,7 +258,17 @@ if (token) {
 
 
     const loadFile = (event) => {
+      const file = event.target.files[0];
+      const erreur = document.getElementById('erreur')
 
+      if (file.type !== 'image/jpeg' && file.type !== 'image/png') {
+        erreur.innerHTML = "L'image ne correspond pas à un fichier jpeg ou png";
+        return;
+      }
+      if (file.size > 4 * 1024 * 1024) {
+        erreur.innerHTML = "Taille de l'image supérieure à 4Mo";
+        return;
+      }
       const reader = new FileReader();
       reader.onload = () => {
         addPhotpBtn.style.width = "0"
