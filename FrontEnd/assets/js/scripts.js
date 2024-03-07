@@ -67,6 +67,14 @@ function onClickFilterButton() {
       let projects = await getProjects();
       projects = sortProjectsByCategory(projects, id);
       displayProjects(projects);
+      for (let j = 0; j < buttons.length; j++) {
+        if (j === i) {
+          buttons[j].classList.add("active");
+        } else {
+          buttons[j].classList.remove("active");
+        }
+      }
+
     });
   }
 }

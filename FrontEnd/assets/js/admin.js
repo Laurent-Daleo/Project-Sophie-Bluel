@@ -5,8 +5,8 @@ const modalGallery = document.querySelector(".modal_gallery");
 
 if (token) {
 
-    displayEditInputs()
-    switchNavigationLogout()
+  displayEditInputs()
+  switchNavigationLogout()
   /**
    * Switche dans la navigation le lien Login / Logout
    */
@@ -25,9 +25,9 @@ if (token) {
     });
   }
 
-      /**
-   * Affiche les boutons pour accéder à l'administration
-   */
+  /**
+* Affiche les boutons pour accéder à l'administration
+*/
   function displayEditInputs() {
     const btnModeEdition = document.createElement("button");
     const btnModify = document.createElement("button");
@@ -41,13 +41,13 @@ if (token) {
         </svg><span>Mode édition</span>`;
     btnEditContainer.classList.add("black_banner");
     btnModeEdition.classList.add("btn-edition");
-  
+
 
     btnModify.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M13.5229 1.68576L13.8939 2.05679C14.1821 2.34503 14.1821 2.81113 13.8939 3.0963L13.0016 3.99169L11.5879 2.57808L12.4803 1.68576C12.7685 1.39751 13.2346 1.39751 13.5198 1.68576H13.5229ZM6.43332 7.73578L10.5484 3.61759L11.9621 5.03121L7.84387 9.14633C7.75494 9.23525 7.64455 9.29964 7.52496 9.33337L5.73111 9.84546L6.2432 8.05162C6.27693 7.93203 6.34133 7.82164 6.43025 7.73271L6.43332 7.73578ZM11.4408 0.646245L5.39074 6.6932C5.12397 6.95998 4.93078 7.28808 4.82959 7.64685L3.9526 10.7133C3.879 10.9708 3.94953 11.2468 4.13965 11.4369C4.32977 11.627 4.60574 11.6976 4.86332 11.624L7.92973 10.747C8.29156 10.6427 8.61967 10.4495 8.88338 10.1858L14.9334 4.13888C15.7951 3.27722 15.7951 1.87894 14.9334 1.01728L14.5624 0.646245C13.7007 -0.215415 12.3024 -0.215415 11.4408 0.646245ZM2.69844 1.84214C1.20816 1.84214 0 3.05031 0 4.54058V12.8812C0 14.3715 1.20816 15.5796 2.69844 15.5796H11.0391C12.5293 15.5796 13.7375 14.3715 13.7375 12.8812V9.44683C13.7375 9.039 13.4094 8.71089 13.0016 8.71089C12.5937 8.71089 12.2656 9.039 12.2656 9.44683V12.8812C12.2656 13.5589 11.7167 14.1078 11.0391 14.1078H2.69844C2.02076 14.1078 1.47188 13.5589 1.47188 12.8812V4.54058C1.47188 3.86291 2.02076 3.31402 2.69844 3.31402H6.13281C6.54065 3.31402 6.86875 2.98591 6.86875 2.57808C6.86875 2.17025 6.54065 1.84214 6.13281 1.84214H2.69844Z" fill="black"/>
         </svg><span>Modifier</span>`;
     btnModify.classList.add("btn-modify");
-    
+
 
     btnEditContainer.append(btnModeEdition);
     btnModifyContainer.append(btnModify);
@@ -62,10 +62,10 @@ if (token) {
       createFirstModal();
     });
   }
- /**
-   * Création de la structure de la modale + ajout dans le DOM
-   */
- function createFirstModal() {
+  /**
+    * Création de la structure de la modale + ajout dans le DOM
+    */
+  function createFirstModal() {
     const body = document.querySelector("body");
     const bckgOpaque = document.createElement("div");
     const modal1 = document.createElement("div");
@@ -100,7 +100,6 @@ if (token) {
       event.preventDefault();
       modal1.remove();
       bckgOpaque.remove();
-      window.location.href = "./index.html";
     });
     // Listerner pour passer à la modal suivante
     addPhotos.addEventListener("click", (event) => {
@@ -134,7 +133,7 @@ if (token) {
                 <path d="M2.71607 0.35558C2.82455 0.136607 3.04754 0 3.29063 0H5.70938C5.95246 0 6.17545 0.136607 6.28393 0.35558L6.42857 0.642857H8.35714C8.71272 0.642857 9 0.930134 9 1.28571C9 1.64129 8.71272 1.92857 8.35714 1.92857H0.642857C0.287277 1.92857 0 1.64129 0 1.28571C0 0.930134 0.287277 0.642857 0.642857 0.642857H2.57143L2.71607 0.35558ZM0.642857 2.57143H8.35714V9C8.35714 9.70915 7.78058 10.2857 7.07143 10.2857H1.92857C1.21942 10.2857 0.642857 9.70915 0.642857 9V2.57143ZM2.57143 3.85714C2.39464 3.85714 2.25 4.00179 2.25 4.17857V8.67857C2.25 8.85536 2.39464 9 2.57143 9C2.74821 9 2.89286 8.85536 2.89286 8.67857V4.17857C2.89286 4.00179 2.74821 3.85714 2.57143 3.85714ZM4.5 3.85714C4.32321 3.85714 4.17857 4.00179 4.17857 4.17857V8.67857C4.17857 8.85536 4.32321 9 4.5 9C4.67679 9 4.82143 8.85536 4.82143 8.67857V4.17857C4.82143 4.00179 4.67679 3.85714 4.5 3.85714ZM6.42857 3.85714C6.25179 3.85714 6.10714 4.00179 6.10714 4.17857V8.67857C6.10714 8.85536 6.25179 9 6.42857 9C6.60536 9 6.75 8.85536 6.75 8.67857V4.17857C6.75 4.00179 6.60536 3.85714 6.42857 3.85714Z" fill="white"/>
                 </svg> `;
       buttonDelete.classList.add("trash");
-      buttonDelete.setAttribute("type","button")
+      buttonDelete.setAttribute("type", "button")
 
       modal1.append(modalGallery);
       modalGallery.append(figure);
@@ -153,22 +152,22 @@ if (token) {
    */
   function deleteImg(id) {
     fetch(`http://localhost:5678/api/works/${id}`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((response) => console.log(response))
-    .catch(function (err) {
-      console.error(err);
-    });
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => console.log(response))
+      .catch(function (err) {
+        console.error(err);
+      });
     resetDisplayCategories()
     fillFirstModalProjects()
-}
- /**
-   * creation de la modal d'ajout des photos
-   */
- function createSecondModal() {
+  }
+  /**
+    * creation de la modal d'ajout des photos
+    */
+  function createSecondModal() {
     const body = document.querySelector("body");
     const modal2 = document.createElement("div");
     const arrowPrevious = document.createElement("div");
@@ -186,7 +185,7 @@ if (token) {
     addPhotoContent.classList.add("add_photo_content");
     form.classList.add("add_info_photos");
     form.setAttribute("id", "formCreateProject");
-  
+
 
     titleModal2.innerText = "Ajout photo";
     arrowPrevious.innerHTML = `<svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -257,7 +256,9 @@ if (token) {
     const output = document.getElementById("imagePreview");
     const addPhotpBtn = document.querySelector(".add_photo_btn")
 
+
     const loadFile = (event) => {
+
       const reader = new FileReader();
       reader.onload = () => {
         addPhotpBtn.style.width = "0"
@@ -270,29 +271,29 @@ if (token) {
     input.addEventListener("change", loadFile);
     input.style.zIndex = "10";
   }
-    /**
-   * récupère les données du formulaire ajout photo
-   */
-    function infoUpload() {
-        const formCreateProject = document.querySelector("#formCreateProject");
-    
-        formCreateProject.addEventListener("submit", (event) => {
-          event.preventDefault();
-          const imageNode = document.querySelector("#inputimg");
-          const titleNode = document.querySelector("#titre");
-          const categoriesNode = document.querySelector("select#categories");
-          const option = categoriesNode.options[categoriesNode.selectedIndex];
-    
-          addPhotosProjets({
-            image: imageNode.files[0],
-            title: titleNode.value,
-            category: option.value,
-          });
-        });
-      }
-        /**
-   * Envoie les photos via API
-   */
+  /**
+ * récupère les données du formulaire ajout photo
+ */
+  function infoUpload() {
+    const formCreateProject = document.querySelector("#formCreateProject");
+
+    formCreateProject.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const imageNode = document.querySelector("#inputimg");
+      const titleNode = document.querySelector("#titre");
+      const categoriesNode = document.querySelector("select#categories");
+      const option = categoriesNode.options[categoriesNode.selectedIndex];
+
+      addPhotosProjets({
+        image: imageNode.files[0],
+        title: titleNode.value,
+        category: option.value,
+      });
+    });
+  }
+  /**
+* Envoie les photos via API
+*/
   async function addPhotosProjets(data) {
     const titleAdd = document.getElementById("titre");
     const callError = document.getElementById("erreur");
@@ -312,7 +313,7 @@ if (token) {
     const uploadImg = await fetch("http://localhost:5678/api/works", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`, 
+        Authorization: `Bearer ${token}`,
       },
       body: newData,
     }).then((response) => console.log(response));
@@ -320,12 +321,12 @@ if (token) {
     newPreview.style.opacity = "0"
     addPhotpBtn.style.width = "163px"
     newForm.reset()
-    
+
   }
   /**
  * fait un reset de l'affichage
  */
-function resetDisplayCategories() {
+  function resetDisplayCategories() {
     const modalGallery = document.querySelector(".modal_gallery");
     modalGallery.remove();
   }
