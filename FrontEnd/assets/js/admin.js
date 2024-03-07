@@ -100,6 +100,7 @@ if (token) {
       event.preventDefault();
       modal1.remove();
       bckgOpaque.remove();
+      resetDisplayGallery()
     });
     // Listerner pour passer à la modal suivante
     addPhotos.addEventListener("click", (event) => {
@@ -140,7 +141,6 @@ if (token) {
       figure.append(img);
       figure.append(buttonDelete);
       buttonDelete.addEventListener("click", (event) => {
-        console.log(event.value);
         event.preventDefault();
         deleteImg(results[i].id)
         return false
@@ -157,12 +157,9 @@ if (token) {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((response) => console.log(response))
-      .catch(function (err) {
-        console.error(err);
-      });
-    resetDisplayCategories()
-    fillFirstModalProjects()
+      .then((response) =>
+        resetDisplayModalGallery());
+    resetDisplayGallery();
   }
   /**
     * creation de la modal d'ajout des photos
@@ -233,7 +230,7 @@ if (token) {
       event.preventDefault();
       modal2.remove();
       bckgOpaque.remove();
-      window.location.href = "./index.html";
+      resetDisplayGallery()
     });
     // Listerner pour passer à la modal précédent
     arrowPrevious.addEventListener("click", (event) => {
@@ -326,18 +323,65 @@ if (token) {
         Authorization: `Bearer ${token}`,
       },
       body: newData,
-    }).then((response) => console.log(response));
+    }).then((response) => console.log("Add ok!"));
     newPreview.src = ""
     newPreview.style.opacity = "0"
     addPhotpBtn.style.width = "163px"
     newForm.reset()
-
+    resetDisplayGallery()
   }
   /**
  * fait un reset de l'affichage
  */
-  function resetDisplayCategories() {
+  function resetDisplayModalGallery() {
     const modalGallery = document.querySelector(".modal_gallery");
     modalGallery.remove();
+    fillFirstModalProjects()
   }
+  /**
+* fait un reset de l'affichage de gallery dans index.html sans rechargement
+*/
+  async function resetDisplayGallery() {
+    const gallery = document.querySelector(".gallery");
+    gallery.innerHTML = "";
+    await galleryReload(); // Appel de la fonction pour recharger la galerie
+  }
+
+  async function galleryReload() {
+    const projects = await getProjects();
+    displayProjects(projects);
+  }
+
+  /**
+  * Récupère les projets depuis l'API
+  */
+  async function getProjects() {
+    const response = await fetch("http://localhost:5678/api/works");
+    const data = await response.json();
+    return data;
+  }
+}
+/**
+ * Parcours la liste des projets
+ */
+async function displayProjects(projects) {
+  for (let i = 0; i < projects.length; i++) {
+    displayProject(projects[i]);
+  }
+}
+/**
+* Affiche un projet dans la galerie
+*/
+function displayProject(project) {
+  const gallery = document.querySelector(".gallery");
+  const figure = document.createElement("figure");
+  const img = document.createElement("img");
+  const figcaption = document.createElement("figcaption");
+  img.src = project.imageUrl;
+  img.alt = project.title;
+  figcaption.innerHTML = project.title;
+
+  figure.appendChild(img);
+  figure.appendChild(figcaption);
+  gallery.appendChild(figure);
 }
